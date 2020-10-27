@@ -28,7 +28,7 @@ def génération():
 
             for i in types:
                 contexte[str(i)] = np.sum(entourage==i)#on compte le nombre d'occurences de chaque type dans l'entourage de la cellule
-                #(ce bout de code a été totalement plagié: https://riptutorial.com/fr/python/example/29216/comptage-des-occurrences-dans-le-tableau-numpy )
+                #(ce bout de code a été trouvé sur: https://riptutorial.com/fr/python/example/29216/comptage-des-occurrences-dans-le-tableau-numpy )
 
             cellule = carte[a,b]#on relève le type de la cellule à traiter
             contexte[str(cellule)] -= 1 #on enlève un au type de la cellule à traiter parce qu'elle a été comptée dans son propre entourage
