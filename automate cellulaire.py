@@ -23,12 +23,12 @@ types = [1,2,3,4]#liste des differents types de cellules (représentés par des 
 def génération():
     for a in range(intervale,côté-intervale):
         for b in range(intervale,côté-intervale):
-            entourage = carte[rayA:rayB,rayA:rayB]#on découpe du tableau entier l'entourage de notre cellule
+            entourage = carte[a+rayA:a+rayB,b+rayA:b+rayB]#on découpe du tableau entier l'entourage de notre cellule
             contexte = {}#on crée un dictionnaire qui va contenir chaque type et son nombre d'occurences
 
             for i in types:
                 contexte[str(i)] = np.sum(entourage==i)#on compte le nombre d'occurences de chaque type dans l'entourage de la cellule
-                #(ce code a été totalement plagié: https://riptutorial.com/fr/python/example/29216/comptage-des-occurrences-dans-le-tableau-numpy )
+                #(ce bout de code a été totalement plagié: https://riptutorial.com/fr/python/example/29216/comptage-des-occurrences-dans-le-tableau-numpy )
 
             cellule = carte[a,b]#on relève le type de la cellule à traiter
             contexte[str(cellule)] -= 1 #on enlève un au type de la cellule à traiter parce qu'elle a été comptée dans son propre entourage
@@ -46,10 +46,6 @@ def île(taille):
             if (b > mid-inter) and (b < mid+inter):#si la case est comprise dans le cercle:
                 carte[a,b] == 1#on la "colorie"
     return(carte)
-            
-
-
-
 
 def règle(cell,context):
     pass
