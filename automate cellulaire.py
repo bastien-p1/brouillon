@@ -1,9 +1,14 @@
 import numpy as np
 import math
+from matplotlib import pyplot as plt
+from matplotlib import cm
+from matplotlib.colors import ListedColormap
+
+rainbow = cm.get_cmap(name="rainbow")#création d'une colormap pour faciliter le rendu
 
 côté = 80 #taille de la carte
 
-carte = np.zeros((côté,côté),dtype=np.uint8)#génération de la carte
+carte = np.zeros((côté,côté),dtype=np.float64)#génération de la carte
 
 intervale = 2#rayon dans lequel chaque cellule prendra en compte les autres
 """
@@ -36,7 +41,7 @@ def génération():
             carte[a,b] = règle(cellule,contexte)#on applique la règle en fonction du type de la cellule et de son entourage
 
 def île(taille):
-    base = np.zeros((taille,taille),dtype=np.uint8)#on crée une portion de carte qui contiendra l'île
+    base = np.zeros((taille,taille),dtype=np.float64)#on crée une portion de carte qui contiendra l'île
     mid = int(taille/2)#on calcule le milieu de l'île (pour aller plus vite)
 
     for a in range(taille):#pour chaque "tranche" de la portion de carte:
